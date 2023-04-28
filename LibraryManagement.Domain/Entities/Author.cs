@@ -8,14 +8,14 @@ namespace LibraryManagement.Domain.Entities
 {
     public class Author 
     {
-        public Author(string name)
-        {
-            Name = name;
-            Books = new List<Book>();
-        }
+        //public Author(string name)
+        //{
+        //    AuthorName = name;
+        //    Books = new List<Book>();
+        //}
 
-        public Guid Id { get; set; }
-        public string Name { get; private set; }
+        public Guid AuthorId { get; set; }
+        public string AuthorName { get; set; }
         public virtual IEnumerable<Book> Books { get; private set; }
     }
 }

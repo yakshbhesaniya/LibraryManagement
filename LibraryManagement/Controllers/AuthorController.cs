@@ -1,4 +1,5 @@
-﻿using LibraryManagement.Domain.Entities;
+﻿using LibraryManagement.API.DTOs;
+using LibraryManagement.Domain.Entities;
 using LibraryManagement.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,9 +28,21 @@ namespace LibraryManagement.API.Controllers
 
         // POST api/<AuthorController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<Author>> Post([FromBody] AddAuthorDTO input)
         {
-            
+            if (_context.Author == null)
+            {
+                return Problem("Entity set 'AppDbContext.Author'  is null.");
+            }
+            var author = new Author
+            {
+                AuthorId = Guid.NewGuid(),
+                AuthorName = input.AuthorName
+            };
+            _context.Author.Add(author);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetAuthors", new { id = author.AuthorId }, author);
         }
 
         // PUT api/<AuthorController>/5
