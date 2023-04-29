@@ -14,6 +14,7 @@ namespace LibraryManagement.API.Controllers
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
+            // book controller get all.
         }
 
         // GET api/<BookController>/5
