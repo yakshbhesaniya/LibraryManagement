@@ -2,9 +2,9 @@
 {
     public class Publication
     {
-            public Guid Id { get; set; }
-            public int Edition { get; set; }
-            public int Year { get; set; }
+            public Guid PublicationId { get; set; }
+            public int PublicationEdition { get; set; }
+            public int PublicationYear { get; set; }
 
             //public Publication(int edition, int year)
             //{
