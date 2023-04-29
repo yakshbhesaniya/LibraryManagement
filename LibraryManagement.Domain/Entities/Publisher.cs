@@ -15,7 +15,7 @@ namespace LibraryManagement.Domain.Entities
         //}
 
         public Guid PublisherId { get; set; }
-        public string PublisherName { get; private set; }
-        public virtual IEnumerable<Book> Books { get; private set; }
+        public string PublisherName { get; set; }
+        public virtual IEnumerable<Book> Books { get; set; }
     }
 }

@@ -37,7 +37,8 @@ namespace LibraryManagement.API.Controllers
             var author = new Author
             {
                 AuthorId = Guid.NewGuid(),
-                AuthorName = input.AuthorName
+                AuthorName = input.AuthorName,
+                Books = new List<Book>()
             };
             _context.Author.Add(author);
             await _context.SaveChangesAsync();
