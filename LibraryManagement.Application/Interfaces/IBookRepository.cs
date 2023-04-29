@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.Application.Interfaces
 {
-    public interface IBookService
+    public interface IBookRepository
     {
         public Task<IEnumerable<Book>> GetAll();
     }

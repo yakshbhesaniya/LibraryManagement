@@ -1,30 +1,25 @@
-﻿using System;
+﻿using LibraryManagement.Application.Interfaces;
+using LibraryManagement.Domain.Entities;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Linq;
-using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LibraryManagement.Application.Services
 {
-    partial class BookService : ServiceBase
+    public class BookService : IBookService
     {
-        public BookService()
-        {
-            InitializeComponent();
-        }
+        private readonly IBookRepository bookRepository;
 
-        protected override void OnStart(string[] args)
-        {
-            // TODO: Add code here to start your service.
-        }
-
-        protected override void OnStop()
-        {
-            // TODO: Add code here to perform any tear-down necessary to stop your service.
-        }
+    public BookService(IBookRepository bookRepository)
+    {
+        this.bookRepository = bookRepository;
     }
+
+    public async Task<IEnumerable<Book>> GetAll()
+    {
+        return await bookRepository.GetAll();
+    }
+}
 }

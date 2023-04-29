@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryManagement.Application.Interfaces;
+using LibraryManagement.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.Net.Security;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,14 +11,15 @@ namespace LibraryManagement.API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        private readonly IBookService bookService;
 
-        public BookController(IBookService bookingService) 
+        public BookController(IBookService bookService)
         {
             this.bookService = bookService;
         }
         // GET: api/<BookController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Book>> Get()
         {
             var book = await bookService.GetAll();
              

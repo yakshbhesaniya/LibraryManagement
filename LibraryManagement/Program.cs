@@ -1,9 +1,14 @@
+using LibraryManagement.Application.Interfaces;
+using LibraryManagement.Application.Services;
 using LibraryManagement.Infrastructure.Data;
+using LibraryManagement.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDBContext>(options =>
