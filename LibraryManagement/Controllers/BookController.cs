@@ -9,11 +9,18 @@ namespace LibraryManagement.API.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+
+        public BookController(IBookService bookingService) 
+        {
+            this.bookService = bookService;
+        }
         // GET: api/<BookController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            var book = await bookService.GetAll();
+             
+            return book;
             // book controller get all.
         }
 
