@@ -8,17 +8,17 @@ namespace LibraryManagement.Domain.Entities
 {
     public class Book
     {
-        public Book() { }
-        public Book(string title, Guid authorId, Guid publisherId, Publication publication)
-        {
-            Title = title;
-            AuthorId = authorId;
-            PublisherId = publisherId;
-            Publication = publication;
-        }
+        //public Book() { }
+        //public Book(string title, Guid authorId, Guid publisherId, Publication publication)
+        //{
+        //    BookTitle = title;
+        //    AuthorId = authorId;
+        //    PublisherId = publisherId;
+        //    Publication = publication;
+        //}
 
         public Guid Id { get; set; }
-        public string Title { get; private set; }
+        public string BookTitle { get; private set; }
         public Guid AuthorId { get; private set; }
         public Guid PublisherId { get; private set; }
         public Publication Publication { get; private set; }
