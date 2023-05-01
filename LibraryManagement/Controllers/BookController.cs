@@ -59,7 +59,7 @@ namespace LibraryManagement.API.Controllers
           
             Book book = new Book { 
                 BookTitle = input.BookTitle,
-             //   Author = "Nilay"            //    Publisher = input.PublisherId,
+               // Author =             //    Publisher = input.PublisherId,
               //  Publication = input.PublicationId
                 };
             var bookdata = await bookService.AddBook(book);     

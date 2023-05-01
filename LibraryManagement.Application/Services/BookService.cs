@@ -32,5 +32,10 @@ namespace LibraryManagement.Application.Services
     {
         return await bookRepository.AddBook(book);
     }
+
+        public Task<Book> GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

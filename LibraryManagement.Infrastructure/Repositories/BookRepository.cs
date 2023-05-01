@@ -32,7 +32,8 @@ namespace LibraryManagement.Infrastructure.Repositories
 
         public async Task<Book> AddBook(Book book)
         {
-            return await db.Book.Add(book);
+            await db.Book.AddAsync(book);
+            return book;
         }
     }
 }
