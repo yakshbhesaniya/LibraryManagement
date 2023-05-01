@@ -1,6 +1,7 @@
 ﻿using LibraryManagement.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;using System.Threading.Tasks;
 
@@ -17,12 +18,13 @@ namespace LibraryManagement.Domain.Entities
         //    Publication = publication;
         //}
 
-        public Guid Id { get; set; }
-        public string BookTitle { get; private set; }
-        public Guid AuthorId { get; private set; }
-        public Guid PublisherId { get; private set; }
-        public Publication Publication { get; private set; }
-        public virtual Author Author { get; private set; }
-        public virtual Publisher Publisher { get; private set; }   
+        public Guid BookId { get; set; }
+        public string BookTitle { get; set; }
+         public Guid PublisherId { get;  set; }
+
+        public Guid PublicationId { get;  set; }
+         public Publication Publication { get; set; }
+         public virtual Author Author { get; set; }
+         public virtual Publisher Publisher { get; set; }   
     }
 }

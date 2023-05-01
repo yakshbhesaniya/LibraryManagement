@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.Application.Interfaces;
 using LibraryManagement.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,5 +22,15 @@ namespace LibraryManagement.Application.Services
     {
         return await bookRepository.GetAll();
     }
-}
+
+    async Task<Book> IBookService.GetByBookid(Guid Bookid)
+    {
+        return await bookRepository.GetByBookid(Bookid);
+    }
+
+    public async Task<Book> AddBook(Book book)
+    {
+        return await bookRepository.AddBook(book);
+    }
+    }
 }

@@ -8,6 +8,7 @@ using LibraryManagement.Domain.Entities;
 using LibraryManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Infrastructure.Repositories
 {
@@ -21,8 +22,17 @@ namespace LibraryManagement.Infrastructure.Repositories
 
         public async Task<IEnumerable<Book>> GetAll()
         {
-            return await db.Book.OrderByDescending(b => b.Id).ToListAsync();
+            return await db.Book.OrderByDescending(b => b.BookId).ToListAsync();
         }
 
+        public async Task<Book> GetByBookid(Guid BookId)
+        {
+            return await db.Book.FindAsync(BookId);
+        }
+
+        public async Task<Book> AddBook(Book book)
+        {
+            return await db.Book.Add(book);
+        }
     }
 }
