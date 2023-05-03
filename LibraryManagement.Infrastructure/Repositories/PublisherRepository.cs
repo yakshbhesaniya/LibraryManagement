@@ -12,29 +12,29 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LibraryManagement.Infrastructure.Repositories
 {
-    public class BookRepository : IBookRepository
+    public class PublisherRepository : IPublisherRepository
     {
         private readonly ApplicationDBContext db;
-        public BookRepository(ApplicationDBContext context)
+        public PublisherRepository(ApplicationDBContext context)
         {
             db = context;
         }
 
-        public async Task<IEnumerable<Book>> GetAll()
+        public async Task<IEnumerable<Publisher>> GetAll()
         {
-            return await db.Book.OrderByDescending(b => b.BookId).ToListAsync();
+            return await db.Publisher.OrderByDescending(b => b.PublisherId).ToListAsync();
         }
 
-        public async Task<Book> GetByBookid(Guid BookId)
+        public async Task<Publisher> GetByPublisherid(Guid PublisherId)
         {
-            return await db.Book.FindAsync(BookId);
+            return await db.Publisher.FindAsync(PublisherId);
         }
 
-        public async Task<Book> AddBook(Book book)
+        public async Task<Publisher> AddPublisher(Publisher publisher)
         {
-            await db.Book.AddAsync(book);
+            await db.Publisher.AddAsync(publisher);
             await db.SaveChangesAsync();
-            return book;
+            return publisher;
         }
     }
 }

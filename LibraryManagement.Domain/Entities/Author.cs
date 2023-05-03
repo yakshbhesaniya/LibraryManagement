@@ -16,6 +16,6 @@ namespace LibraryManagement.Domain.Entities
 
         public Guid AuthorId { get; set; }
         public string AuthorName { get; set; }
-        public virtual IEnumerable<Book> Books { get; private set; }
+      //  public virtual IEnumerable<Book> Books { get; private set; }
     }
 }

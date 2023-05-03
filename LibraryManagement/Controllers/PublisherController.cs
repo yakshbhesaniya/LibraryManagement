@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryManagement.API.DTOs;
+using LibraryManagement.Application.Interfaces;
+using LibraryManagement.Application.Services;
+using LibraryManagement.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,24 +12,40 @@ namespace LibraryManagement.API.Controllers
     [ApiController]
     public class PublisherController : ControllerBase
     {
+        private readonly IPublisherService publisherService;
+        public PublisherController(IPublisherService publisherService) 
+        {
+            this.publisherService = publisherService;
+        }
         // GET: api/<PublisherController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IEnumerable<Publisher>> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            var publisher = await publisherService.GetAll();
+
+            return publisher;
         }
 
         // GET api/<PublisherController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Publisher>> GetByPublisherid(Guid PublisherId)
         {
-            return "value";
+            var publisherDetailToFound = await publisherService.GetByPublisherid(PublisherId);
+            return Ok(publisherDetailToFound);
         }
 
         // POST api/<PublisherController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<Publisher>> AddPublisher([FromBody] AddPublisherDTO input)
         {
+            Publisher publisher = new Publisher
+            {
+                PublisherId = Guid.NewGuid(),
+                PublisherName = input.PublisherName
+            };
+            var publisherdata = await publisherService.AddPublisher(publisher);
+            return Ok(publisherdata);
+
         }
 
         // PUT api/<PublisherController>/5

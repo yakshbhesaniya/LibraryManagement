@@ -2,9 +2,9 @@
 
 namespace LibraryManagement.API.DTOs
 {
-    public class AddAuthorDTO
+    public class AddPublisherDTO
     {
-    [Required]
-    public string AuthorName { get; set; }
+        [Required]
+        public string PublisherName { get; set; }
     }
 }

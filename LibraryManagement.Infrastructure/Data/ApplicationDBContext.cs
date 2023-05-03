@@ -19,5 +19,7 @@ namespace LibraryManagement.Infrastructure.Data
         public DbSet<Publisher> Publisher { get; set; }
         public DbSet<Book> Book { get; set; }
 
+        public DbSet<Publication> Publication { get; set; }
+
     }
 }

@@ -40,10 +40,10 @@ namespace LibraryManagement.API.Controllers
 
             var bookDetailToFound = await bookService.GetByBookid(Bookid);
 
-      //      Book book = new Book
-      //      {
-      //          BookId= Bookid,
-       //         BookTitle = Book.Title,
+         //  Book book = new Book
+         //  {
+         //       BookId= Bookid,
+          //     BookTitle = book.BookTitle,
        //         Author = Book.Author,
         //        Publication = Book.Publication
          //   };
@@ -55,12 +55,14 @@ namespace LibraryManagement.API.Controllers
         [HttpPost]
         public async Task<ActionResult<Book>> Addbook([FromBody] AddBookDTO input)
         {
-          //  var Author = await Author.FindAsync(new Guid(input.AuthorId));
+           // var Author1 = await Author.FindAsync(new Guid(input.AuthorId));
           
             Book book = new Book { 
-                BookTitle = input.BookTitle,
-               // Author =             //    Publisher = input.PublisherId,
-              //  Publication = input.PublicationId
+                BookTitle = input.BookTitle
+      
+        //        Author = input.AuthorId           
+      //        Publisher = input.PublisherId,
+       //         Publication = input.PublicationId
                 };
             var bookdata = await bookService.AddBook(book);     
             return Ok(bookdata);

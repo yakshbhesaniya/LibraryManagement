@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20230428132950_init2")]
-    partial class init2
+    [Migration("20230503121029_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,7 +42,7 @@ namespace LibraryManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("LibraryManagement.Domain.Entities.Book", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -59,7 +59,7 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<Guid>("PublisherId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("Id");
+                    b.HasKey("BookId");
 
                     b.HasIndex("AuthorId");
 
@@ -72,7 +72,7 @@ namespace LibraryManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("LibraryManagement.Domain.Entities.Publication", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("PublicationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -82,7 +82,7 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("PublicationId");
 
                     b.ToTable("Publication");
                 });
@@ -105,7 +105,7 @@ namespace LibraryManagement.Infrastructure.Migrations
             modelBuilder.Entity("LibraryManagement.Domain.Entities.Book", b =>
                 {
                     b.HasOne("LibraryManagement.Domain.Entities.Author", "Author")
-                        .WithMany("Books")
+                        .WithMany()
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -127,11 +127,6 @@ namespace LibraryManagement.Infrastructure.Migrations
                     b.Navigation("Publication");
 
                     b.Navigation("Publisher");
-                });
-
-            modelBuilder.Entity("LibraryManagement.Domain.Entities.Author", b =>
-                {
-                    b.Navigation("Books");
                 });
 
             modelBuilder.Entity("LibraryManagement.Domain.Entities.Publisher", b =>
