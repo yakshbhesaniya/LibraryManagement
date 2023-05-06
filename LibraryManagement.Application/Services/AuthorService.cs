@@ -13,10 +13,10 @@ using System.Threading.Tasks;
     {
         private readonly IAuthorRepository authorRepository;
 
-    public AuthorService(IAuthorRepository authorRepository)
-    {
-        this.authorRepository = authorRepository;
-    }
+        public AuthorService(IAuthorRepository authorRepository)
+        {
+            this.authorRepository = authorRepository;
+        }
 
     public async Task<IEnumerable<Author>> GetAll()
     {

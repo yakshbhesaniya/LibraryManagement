@@ -58,12 +58,11 @@ namespace LibraryManagement.API.Controllers
            // var Author1 = await Author.FindAsync(new Guid(input.AuthorId));
           
             Book book = new Book { 
-                BookTitle = input.BookTitle
-      
-        //        Author = input.AuthorId           
-      //        Publisher = input.PublisherId,
-       //         Publication = input.PublicationId
-                };
+                BookTitle = input.BookTitle,
+                PublisherId = input.PublisherId,
+                AuthorId = input.AuthorId,
+                PublicationId = input.PublicationId
+            };
             var bookdata = await bookService.AddBook(book);     
             return Ok(bookdata);
         }

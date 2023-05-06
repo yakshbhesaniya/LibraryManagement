@@ -24,6 +24,7 @@ namespace LibraryManagement.Domain.Entities
 
         public Guid PublicationId { get;  set; }
          public Publication Publication { get; set; }
+        public Guid AuthorId { get; set; }
          public virtual Author Author { get; set; }
          public virtual Publisher Publisher { get; set; }   
     }
